@@ -1,14 +1,23 @@
+import { useDispatch } from 'react-redux';
+
 import CartButton from '../Cart/CartButton';
 import classes from './MainHeader.module.css';
+import { cartActions } from '../../store/cart';
 
 const MainHeader = (props) => {
+  const dispatch = useDispatch();
+
+  function handleToggleCart() {
+    dispatch(cartActions.toggleCart());
+  }
+
   return (
     <header className={classes.header}>
       <h1>ReduxCart</h1>
       <nav>
         <ul>
           <li>
-            <CartButton />
+            <CartButton handleClick={handleToggleCart} />
           </li>
         </ul>
       </nav>
