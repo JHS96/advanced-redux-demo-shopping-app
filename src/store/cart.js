@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const initialCartState = { showCart: true, items: [], numberOfItemsInCart: 0 };
+const initialCartState = { showCart: false, items: [], numberOfItemsInCart: 0 };
 
 function handleAddItemToCart(state, action) {
   const itemIdx = state.items.findIndex(
@@ -53,4 +53,4 @@ const cartSlice = createSlice({
 
 export const cartActions = cartSlice.actions;
 
-export default cartSlice.reducer;
+export default cartSlice;
