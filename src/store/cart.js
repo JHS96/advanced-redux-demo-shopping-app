@@ -1,6 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const initialCartState = { showCart: false, items: [], numberOfItemsInCart: 0 };
+const initialCartState = {
+  showCart: false,
+  items: [],
+  numberOfItemsInCart: 0,
+  totalPrice: 0,
+};
 
 function handleAddItemToCart(state, action) {
   const itemIdx = state.items.findIndex(
@@ -15,11 +20,14 @@ function handleAddItemToCart(state, action) {
       description: action.payload.description,
       quantity: 1,
     });
+    state.totalPrice += action.payload.price;
   } else {
     state.items[itemIdx].quantity += 1;
+    state.totalPrice += state.items[itemIdx].price;
   }
 
   state.numberOfItemsInCart += 1;
+  console.log(state.totalPrice);
 }
 
 function handleRemoveItemFromCart(state, action) {
@@ -29,6 +37,8 @@ function handleRemoveItemFromCart(state, action) {
 
   state.items[itemIdx].quantity -= 1;
   state.numberOfItemsInCart -= 1;
+  state.totalPrice -= state.items[itemIdx].price;
+  console.log(state.totalPrice);
 
   if (state.items[itemIdx].quantity <= 0) {
     state.items = state.items.filter((item) => item.id !== action.payload.id);

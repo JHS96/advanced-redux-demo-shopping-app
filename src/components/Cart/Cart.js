@@ -21,7 +21,7 @@ const Cart = () => {
                 title: item.title,
                 quantity: item.quantity,
                 total: item.price * item.quantity,
-                price: Number(item.price),
+                price: item.price,
                 description: item.description,
               }}
             />
