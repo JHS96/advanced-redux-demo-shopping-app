@@ -2,15 +2,15 @@ import ProductItem from './ProductItem';
 import classes from './Products.module.css';
 
 const Products = () => {
-  const products = [
+  const DUMMY_PRODUCTS = [
     {
-      id: 1,
+      id: 'p1',
       title: 'Test',
       price: 6,
       description: 'This is a first product - amazing!',
     },
     {
-      id: 2,
+      id: 'p2',
       title: 'Better Test',
       price: 10,
       description: 'Better than the regular Test!',
@@ -21,7 +21,7 @@ const Products = () => {
     <section className={classes.products}>
       <h2>Buy your favorite products</h2>
       <ul>
-        {products.map((product) => (
+        {DUMMY_PRODUCTS.map((product) => (
           <ProductItem
             key={product.id}
             id={product.id}

@@ -6,8 +6,7 @@ import { cartActions } from '../../store/cart';
 const CartItem = (props) => {
   const dispatch = useDispatch();
 
-  const { title, quantity, total, price } = props.item;
-  const id = props.id;
+  const { id, title, quantity, total, price } = props.item;
 
   function increaseQuantityHandler() {
     dispatch(cartActions.addItemToCart({ id }));

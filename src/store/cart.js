@@ -27,7 +27,6 @@ function handleAddItemToCart(state, action) {
   }
 
   state.numberOfItemsInCart += 1;
-  console.log(state.totalPrice);
 }
 
 function handleRemoveItemFromCart(state, action) {
@@ -36,13 +35,13 @@ function handleRemoveItemFromCart(state, action) {
   );
 
   state.items[itemIdx].quantity -= 1;
-  state.numberOfItemsInCart -= 1;
   state.totalPrice -= state.items[itemIdx].price;
-  console.log(state.totalPrice);
 
   if (state.items[itemIdx].quantity <= 0) {
     state.items = state.items.filter((item) => item.id !== action.payload.id);
   }
+
+  state.numberOfItemsInCart -= 1;
 }
 
 const cartSlice = createSlice({
